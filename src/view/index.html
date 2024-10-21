@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="sp">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes-App</title>
-    <link rel="shortcut icon" href="./storage/img/logo.png" type="image/png">
-    <link rel="stylesheet" href="./css/style.css">
-    <script type="module" defer src="js/main.js"></script>
+    <title>Notes App</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer type="module" src="../js/main.js"></script>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="header">
+            <h1>Notes</h1>
+            <div>
+                <span>🔍</span>
+                <span>ℹ️</span>
+            </div>
+        </div>
+        <div id="notesContainer" class="notes-container">
+            <!-- Notes will be added here dynamically -->
+        </div>
+    </div>
+    <button id="addBtn" class="add-btn">+</button>
 </body>
 </html>
