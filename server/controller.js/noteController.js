@@ -1,3 +1,6 @@
+const Note = require('../model/noteModel')
+const note = new Note();
+
 /**
  * 
  * @method findAllNotes Obtiene todas las notes
@@ -5,7 +8,8 @@
  */
 exports.findAllNotes = async(req, res)=>{
     try{
-
+        let result = await note.getAllNotes;
+        return res.status(result.status).json(result);
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);
