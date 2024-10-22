@@ -1,5 +1,6 @@
 const router = require('express').router();
 const userController = require('../controller/userController');
+const versionMiddleware = require('../middleware/versionate');
 
 // Las rutas que preceden a otras rutas tienen prioridad.
 // Las rutas con parámetros, seguidas por otra ruta, ocupan el segundo lugar.

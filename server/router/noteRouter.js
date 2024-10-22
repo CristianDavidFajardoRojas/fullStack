@@ -1,3 +1,5 @@
+const versionMiddleware = require('../middleware/versionate');
+
 const router = require('express').Router();
 const noteController = require('../controller/noteController');
 const historyController = require('../controller/historyController')
