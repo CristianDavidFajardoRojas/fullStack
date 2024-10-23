@@ -8,7 +8,7 @@ const note = new Note();
  */
 exports.findAllNotes = async(req, res)=>{
     try{
-        let result = await note.getAllNotes;
+        let result = await note.getAllNotes();
         return res.status(result.status).json(result);
     }catch(error){
         let err = JSON.parse(error.message);

@@ -1,4 +1,4 @@
-const router = require('express').router();
+const router = require('express').Router();
 const userController = require('../controller/userController');
 const versionMiddleware = require('../middleware/versionate');
 
