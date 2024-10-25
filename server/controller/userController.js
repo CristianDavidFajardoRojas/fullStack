@@ -6,7 +6,7 @@
  */
 exports.addNewUser = async(req, res)=>{
     try{
-
+        
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);

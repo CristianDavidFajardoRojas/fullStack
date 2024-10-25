@@ -28,10 +28,11 @@ exports.findAllNotes = async(req, res)=>{
  */
 exports.findNoteById = async(req, res)=>{
     try{
-
+        let result = await note.getNoteById(req.params.id);
+        return res.status(result.status).json(result);
     }catch(error){
         let err = JSON.parse(error.message);
-        return res.status(err.status).json(err.message);
+        return res.status(err.status).json(err);
     }
 }
 
