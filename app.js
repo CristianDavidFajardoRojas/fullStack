@@ -3,6 +3,7 @@ const userRouters = require('./server/router/userRouter');
 const noteRouters = require('./server/router/noteRouter');
 const error = require('./server/middleware/errorHandler');
 const session = require('./server/middleware/sessionConfig');
+const { auth } = require('./server/middleware/decodedJWT');
 
 const https = require('https');
 const fs = require('fs');
@@ -16,7 +17,7 @@ app.use(session);
 app.use(error.jsonParseErrorHandler);
 
 app.use("/users", userRouters);
-app.use("/notes", noteRouters);
+app.use("/notes", auth, noteRouters);
 
 
 
