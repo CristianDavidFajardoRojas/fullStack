@@ -1,3 +1,11 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const fs = require('fs');
+
+
+const User = require('../model/userModel');
+const user = new User();
+
 /**
  * 
  * @method addNewUser Crear Usuario
@@ -6,7 +14,15 @@
  */
 exports.addNewUser = async(req, res)=>{
     try{
-        
+        req.body.password = await bcrypt.hash(req.body.password, 10);
+        let resultPOST = await user.save(req.body);
+        if(resultPOST.status !== 201) return res.status(resultPOST.status).json(resultPOST);
+        delete req.body.password;
+        req.body._id = resultPOST.data.insertedId;
+        const SECRET_KEY =  fs.readFileSync('./certificate.csr');
+        const token = jwt.sign(req.body, SECRET_KEY.toString('utf8'), {expiresIn: 1800000});
+        req.session.auth = token;
+        return res.status(202).json({status: 202, message: 'User created succesfully'});
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);

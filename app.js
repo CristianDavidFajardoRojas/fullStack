@@ -2,6 +2,7 @@ const express = require('express');
 const userRouters = require('./server/router/userRouter');
 const noteRouters = require('./server/router/noteRouter');
 const error = require('./server/middleware/errorHandler');
+const session = require('./server/middleware/sessionConfig');
 
 const https = require('https');
 const fs = require('fs');
@@ -11,14 +12,13 @@ const certificate = fs.readFileSync('./certificate.crt');
 const app = express();
 
 app.use(express.json());
+app.use(session);
 app.use(error.jsonParseErrorHandler);
 
 app.use("/users", userRouters);
 app.use("/notes", noteRouters);
 
-app.get('/', (req, res) => {
-    res.send('Ok')
-})
+
 
 
 
