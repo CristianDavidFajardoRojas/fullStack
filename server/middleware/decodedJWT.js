@@ -9,6 +9,6 @@ exports.auth = async(req, res, next)=>{
         next();
     }catch(error){
         
-        return res.status(401).json({status: 401, message: 'No token provided'});
+        return res.status(401).json({status: 401, message: 'No token provided', data: error.message});
     }
 }
