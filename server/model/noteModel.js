@@ -19,11 +19,11 @@ module.exports = class Note extends connect{
 
 
 
-    async getNoteById(id){
+    async getNoteById(id, idUser){
         try {
             const { status, message, data: db} = await this.getConnect();
             const collection = db.collection('note');
-            const result = await collection.findOne({_id: new ObjectId(id)});
+            const result = await collection.findOne({_id: new ObjectId(id), user_id: new ObjectId(idUser)});
             if(result) return{status: 200, message: "Note obtained", data: result};
             return {status: 404, message: "Note not found", data: result};
         } catch (error) {
