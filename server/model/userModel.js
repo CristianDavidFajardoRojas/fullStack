@@ -25,5 +25,25 @@ module.exports = class User extends connect{
         }
     }
 
+
+    async update(id, body){
+        try{
+            const { status, message, data: db } = await this.getConnect();
+            const collection = db.collection('user');
+            const [resultNickName] = body.nickname ? await collection.find({
+                nickname: body.nickname,
+            }).toArray() : undefined;
+            if (resultNickName) return { status: 200, message: "El nickName ya existe en la colección.", data: undefined };
+            const [resultEmail] = body.email ? await collection.find({
+                email: body.email
+            }).toArray() : undefined;
+            if (resultEmail) return { status: 200, message: "El email ya existe en la colección.", data: undefined };
+            const result = await collection.updateOne({_id: new ObjectId(id)}, {$set: body});
+            return { status: 200, message: "User modified succesfully", data: result };
+        }catch (error) {
+            throw new Error(JSON.stringify({ status: 500, message: "Error updating the user", data: error.message }));
+        }
+    }
+
 }
 

@@ -78,10 +78,12 @@ exports.logOutUser = async(req, res)=>{
  */
 exports.updateUserById = async(req, res)=>{
     try{
-
+        if( req.body.password ) req.body.password = await bcrypt.hash(req.body.password, 10);
+        let resultUPDATE = await user.update(req.params.id, req.body);
+        return res.status(resultUPDATE.status).json(resultUPDATE);
     }catch(error){
         let err = JSON.parse(error.message);
-        return res.status(err.status).json(err.message);
+        return res.status(err.status).json(err);
     }
 }
 
