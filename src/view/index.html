@@ -11,15 +11,25 @@
     <div class="container">
         <div class="header">
             <h1>Notes</h1>
-            <div>
-                <span>🔍</span>
-                <span>ℹ️</span>
+            <div class="images_top_right">
+                <div id="searchImg"><img src="../storage/img/search.png" alt=""></div>
             </div>
         </div>
         <div id="notesContainer" class="notes-container">
             <!-- Notes will be added here dynamically -->
         </div>
     </div>
-    <button id="addBtn" class="add-btn">+</button>
+    <button id="addBtn" class="add-btn"><img src="../storage/img/add.png" alt=""></button>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeBtn" class="close">&times;</span>
+            <h2>Add New Note</h2>
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+            <label for="description">Description:</label>
+            <textarea id="description" rows="4" required></textarea>
+            <button id="saveBtn">Save</button>
+        </div>
+    </div>
 </body>
 </html>
