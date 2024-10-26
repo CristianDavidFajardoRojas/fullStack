@@ -45,5 +45,17 @@ module.exports = class User extends connect{
         }
     }
 
+
+    async findByEmail(email){
+        try {       
+            const { status, message, data: db } = await this.getConnect();
+            const collection = db.collection('user');
+            const result = await collection.findOne({email: email});
+            if(result) return { status: 200, message: 'User found succesfully', data: result}
+            return { status: 404, message: 'Email not found', data: null }
+        } catch (error) {
+            return { status : 500, message: 'Error finding the user', data: error.message }
+        }
+    }
 }
 
