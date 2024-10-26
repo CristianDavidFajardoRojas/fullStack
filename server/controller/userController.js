@@ -69,7 +69,13 @@ exports.signInUser = async(req, res)=>{
  */
 exports.logOutUser = async(req, res)=>{
     try{
-
+        req.session.destroy((err) => {
+            if (err) {
+                return res.status(500).send({status: 500, message: 'Error al cerrar sesión'});
+            }
+            res.clearCookie('connect.sid'); 
+            return res.status(200).send({status: 200, message: 'Sesión cerrada correctamente'});
+        });
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);
