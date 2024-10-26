@@ -1,3 +1,4 @@
+const { re } = require('semver');
 const Note = require('../model/noteModel')
 const note = new Note();
 
@@ -51,7 +52,8 @@ exports.findNoteById = async(req, res)=>{
  */
 exports.findNotesMatchingTitleOrDescription = async(req, res)=>{
     try{
-
+        let result = await note.getNoteByTitleOrDesc(req.body.text, req.data._id);
+        return res.status(result.status).json(result); 
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);

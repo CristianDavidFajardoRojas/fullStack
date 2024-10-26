@@ -30,4 +30,27 @@ module.exports = class Note extends connect{
             throw new Error(JSON.stringify({status: 500, message: "Error getting note by id", data: error.message}))
         }
     }
+
+
+
+    async getNoteByTitleOrDesc(text, idUser){
+        try {
+            const { status, message, data: db} = await this.getConnect();
+            const collection = db.collection('note');
+            console.log(text)
+            const result = await collection.find({
+                $or: [
+                   { title: { $regex: new RegExp(text.trim(), 'i') } },
+                   { description: { $regex: new RegExp(text.trim(), 'i') } }
+                ],
+                user_id: new ObjectId(idUser)
+            }).toArray();
+
+            if(result) return{status: 200, message: "Note obtained", data: result};
+            return {status: 404, message: "Note not found", data: result};
+        } catch (error) {
+            console.log(error.message);
+            throw new Error(JSON.stringify({status: 500, message: "Error getting note by id", data: error.message}))
+        }
+    }    
 }
