@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Review App</title>
+    <link rel="stylesheet" href="../css/editNote.css">
+    <script defer type="module" src="../js/editNote.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="top-bar">
+            <button id="backBtn"><img src="../storage/img/chevron_left.png" alt=""></button>
+            <div>
+                <button><img src=""></button>
+                <button>📷</button>
+            </div>
+        </div>
+        <div class="content">
+            <h1 contenteditable="true">Book Review: The Design of Everyday Things by Don Norman</h1>
+            <div class="description" contenteditable="true">
+                <p>The Design of Everyday Things is required reading for anyone who is interested in the user experience. I personally like to reread it every year or two.</p>
+                <p>Norman is aware of the durability of his work and the applicability of his principles to multiple disciplines.</p>
+                <p>If you know the basics of design better than anyone else, you can apply them flawlessly anywhere.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>Do you want to save your changes?</p>
+            <div class="modal-buttons">
+                <button class="discard">Discard</button>
+                <button class="save">Save</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
