@@ -69,4 +69,25 @@ module.exports = class Note extends connect{
             throw new Error(JSON.stringify({status: 500, message: "Error creating note", data: error.message}))
         }
     }
+
+
+
+
+
+    
+    async updateNote(id, idUser, data){
+        try{
+            const { status, message, data: db} = await this.getConnect();
+            const collection = db.collection('note');
+            const result = await collection.updateOne({_id: new ObjectId(id), user_id: new ObjectId(idUser)},{$set: data});
+            return{status: 200, message: "Note Updated Succesfully", data: result};
+        }catch(error){
+            console.log(error.message);
+            throw new Error(JSON.stringify({status: 500, message: "Error creating note", data: error.message}))
+        }
+    }
+
+
+
+
 }

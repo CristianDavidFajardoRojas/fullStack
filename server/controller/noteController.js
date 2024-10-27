@@ -95,7 +95,8 @@ exports.save = async(req, res)=>{
  */
 exports.updateNoteById = async(req, res)=>{
     try{
-
+        let result = await note.updateNote(req.params.id, req.data._id, req.body);
+        return res.status(result.status).json(result);
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);
