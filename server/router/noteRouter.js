@@ -41,6 +41,6 @@ router.put("/:id", versionMiddleware("1.0.0"), noteController.updateNoteById);
 router.delete("/:id", versionMiddleware("1.0.0"), noteController.deleteNoteById);
 
 router.use(layout);
-router.use('/edit', layoutEdit)
+router.use('/edit', layoutEdit);
 
 module.exports = router;

@@ -69,6 +69,15 @@ const getData = async() => {
 
 
 
+            ////Editar nota
+            notesDivs.forEach(noteDiv => {
+                noteDiv.addEventListener('click', async(e)=>{
+                    location.href = `notes/edit?id=${noteDiv.id}`                    
+                })
+            })            
+            //////////////////////////////////////////////////////////////////////////////////////
+
+
         });
     } else {
         notesContainer.innerHTML = "<div class = 'imgAddNote'><img src = '../storage/img/rafiki.png'><span>Create your first note !</span></div>"
