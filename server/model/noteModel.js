@@ -37,7 +37,6 @@ module.exports = class Note extends connect{
         try {
             const { status, message, data: db} = await this.getConnect();
             const collection = db.collection('note');
-            console.log(text)
             const result = await collection.find({
                 $or: [
                    { title: { $regex: new RegExp(text.trim(), 'i') } },
@@ -53,4 +52,6 @@ module.exports = class Note extends connect{
             throw new Error(JSON.stringify({status: 500, message: "Error getting note by id", data: error.message}))
         }
     }    
+
+
 }

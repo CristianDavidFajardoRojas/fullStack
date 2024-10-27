@@ -11,7 +11,7 @@ const historyController = require('../controller/historyController')
  */
 router.get("/search", versionMiddleware("1.0.0"), noteController.findNotesMatchingTitleOrDescription);
 
-router.get("/:id/history", versionMiddleware("1.0.0"), noteController.findNoteChangeHistory);
+router.get("/:id/history", versionMiddleware("1.0.0"), historyController.findNoteChangeHistory);
 
 router.get("/:id", versionMiddleware("1.0.0"), noteController.findNoteById);
 

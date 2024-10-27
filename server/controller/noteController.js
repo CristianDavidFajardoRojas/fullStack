@@ -67,27 +67,6 @@ exports.findNotesMatchingTitleOrDescription = async(req, res)=>{
 
 
 
-
-
-/**
- * 
- * @method findNoteChangeHistory Obtiene historial de cambios de una nota
- * @description Obtiene historial de cambios de una nota
- */
-exports.findNoteChangeHistory = async(req, res)=>{
-    try{
-
-    }catch(error){
-        let err = JSON.parse(error.message);
-        return res.status(err.status).json(err.message);
-    }
-}
-
-
-
-
-
-
 /**
  * 
  * @method save Crear Note
