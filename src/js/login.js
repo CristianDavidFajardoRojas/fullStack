@@ -9,9 +9,6 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     data.email = email;
     data.password = password;
 
-    console.log(data)
-    console.log(JSON.stringify(data))
-
     let config = {
         method: "POST",
         headers: {
