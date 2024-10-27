@@ -22,7 +22,6 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     let res = await peticion.json();
     alert(res.message);
     if(res.status == 200) {
-        alert(res.status);
         location.href = "/notes";
     }
      

@@ -3,27 +3,27 @@ const uri = `${location.href}`;
 const notesContainer = document.getElementById('notesContainer');
 const addBtn = document.getElementById('addBtn');
 const colors = [
+    '#FF9AA2', // Pastel Rosa Claro
     '#FFB3BA', // Pastel Rosa
+    '#F5C6D0', // Pastel Rosa Suave
     '#FFDFBA', // Pastel Naranja
     '#FFFBBA', // Pastel Amarillo
+    '#EAB8B8', // Pastel Rosa Claro
     '#FFFFBA', // Pastel Amarillo Claro
+    '#D5AAFF', // Pastel Lavanda Claro
     '#BAFFC9', // Pastel Verde Menta
     '#BAE1FF', // Pastel Azul Claro
+    '#FFD1B5', // Pastel Melón
     '#FFC3A0', // Pastel Melocotón
     '#FF677D', // Pastel Rosa Fuerte
     '#F8B400', // Pastel Amarillo Mostaza
     '#F67280', // Pastel Coral
-    '#F5C6D0', // Pastel Rosa Suave
     '#A7C6ED', // Pastel Azul Pastel
-    '#FFD1B5', // Pastel Melón
     '#B3E5E0', // Pastel Aqua
-    '#FF9AA2', // Pastel Rosa Claro
-    '#FFABAB', // Pastel Rojo Claro
     '#B2B2D0', // Pastel Gris Azulado
     '#B8E0F9', // Pastel Cielo
-    '#EAB8B8', // Pastel Rosa Claro
+    '#FFABAB', // Pastel Rojo Claro
     '#A0E7E5', // Pastel Aqua Claro
-    '#D5AAFF', // Pastel Lavanda Claro
 ];
 
 const modal = document.getElementById('modal');
@@ -113,19 +113,35 @@ window.onclick = function(event) {
     }
 }
 
-saveBtn.onclick = function() {
+saveBtn.onclick = async() => {
     const title = document.getElementById('title').value;
     const description = document.getElementById('description').value;
 
     if (title && description) {
-        // Aquí puedes agregar la lógica para guardar la nota
-        console.log('Título:', title);
-        console.log('Descripción:', description);
+        let dataInsert = {
+            title: title,
+            description: description
+        }
+        let configInsert = {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'x-version': '1.0.0'  
+            },
+            body: JSON.stringify(dataInsert)
+        };
+
+        
+        let peticionInsert = await fetch(`${uri}` , configInsert);
+        let resInsert = await peticionInsert.json();
+        alert(resInsert.message);   
+        
         
         // Limpiar campos y cerrar el modal
         document.getElementById('title').value = '';
         document.getElementById('description').value = '';
         modal.style.display = 'none';
+        getData();
     } else {
         alert('Por favor, completa ambos campos.');
     }
