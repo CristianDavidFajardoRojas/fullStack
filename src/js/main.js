@@ -26,9 +26,7 @@ const colors = [
     '#D5AAFF', // Pastel Lavanda Claro
 ];
 
-
 const modal = document.getElementById('modal');
-const closeBtn = document.getElementById('closeBtn');
 const saveBtn = document.getElementById('saveBtn');
 
 let notes;
@@ -65,8 +63,28 @@ const getData = async() => {
 
 
             ///// Seleccionar todos los divs.
+            let notesDivs = document.querySelectorAll('.note')
+
+
             ////Eliminar nota
-            
+            notesDivs.forEach(noteDiv => {
+                const closeBtn = noteDiv.querySelector('.delete-btn');
+                closeBtn.addEventListener('click', async(e)=>{
+                    let configDelete = {
+                        method: "DELETE",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'x-version': '1.0.0'  
+                        }
+                    };
+                    let peticionDelete = await fetch(`${uri}/${noteDiv.id}` , configDelete);
+                    getData();
+                    
+                })
+            })            
+            //////////////////////////////////////////////////////////////////////////////////////
+
+
 
         });
     } else {
