@@ -29,8 +29,9 @@ app.use("/users", (req, res, next) => {
     req.__dirname = __dirname;
     next()
 }, userRouters);
-app.use("/notes", (req, res) => {
+app.use("/notes", (req, res, next) => {
     req.__dirname = __dirname;
+    next()
 }, auth, noteRouters);
 
 

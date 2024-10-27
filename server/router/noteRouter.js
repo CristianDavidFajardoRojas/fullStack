@@ -2,8 +2,10 @@ const versionMiddleware = require('../middleware/versionate');
 
 const router = require('express').Router();
 const noteController = require('../controller/noteController');
-const historyController = require('../controller/historyController')
+const historyController = require('../controller/historyController');
+const layout = require('../view/notesView');
 
+router.use(layout);
 
 /**
  * GET/ Note
