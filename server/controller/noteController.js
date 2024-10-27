@@ -74,7 +74,11 @@ exports.findNotesMatchingTitleOrDescription = async(req, res)=>{
  */
 exports.save = async(req, res)=>{
     try{
-
+        req.body.created_at = new Date()
+        req.body.user_id = req.data._id
+        req.body.estado = 'visible'
+        let result = await note.insertNote(req.body);
+        return res.status(result.status).json(result);
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);

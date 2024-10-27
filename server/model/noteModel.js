@@ -49,9 +49,24 @@ module.exports = class Note extends connect{
             return {status: 404, message: "Note not found", data: result};
         } catch (error) {
             console.log(error.message);
-            throw new Error(JSON.stringify({status: 500, message: "Error getting note by id", data: error.message}))
+            throw new Error(JSON.stringify({status: 500, message: "Error getting note by title or desc.", data: error.message}))
         }
     }    
 
 
+
+
+    async insertNote(data){
+        try{
+            data.user_id = new ObjectId(data.user_id);
+            const { status, message, data: db} = await this.getConnect();
+            const collection = db.collection('note');
+            const result = await collection.insertOne(data);
+            if(result) return{status: 201, message: "Note Inserted Succesfully", data: result};
+            return {status: 404, message: "Note not found", data: result};
+        }catch(error){
+            console.log(error.message);
+            throw new Error(JSON.stringify({status: 500, message: "Error creating note", data: error.message}))
+        }
+    }
 }
