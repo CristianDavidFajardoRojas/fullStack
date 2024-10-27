@@ -83,11 +83,23 @@ module.exports = class Note extends connect{
             return{status: 200, message: "Note Updated Succesfully", data: result};
         }catch(error){
             console.log(error.message);
-            throw new Error(JSON.stringify({status: 500, message: "Error creating note", data: error.message}))
+            throw new Error(JSON.stringify({status: 500, message: "Error updating note", data: error.message}))
         }
     }
 
 
 
+    
+    async deleteNote(id, idUser){
+        try{
+            const { status, message, data: db} = await this.getConnect();
+            const collection = db.collection('note');
+            const result = await collection.updateOne({_id: new ObjectId(id), user_id: new ObjectId(idUser), estado: "visible"}, {$set: {estado: "invisible"}});
+            return{status: 200, message: "Note Deleted Succesfully", data: result};
+        }catch(error){
+            console.log(error.message);
+            throw new Error(JSON.stringify({status: 500, message: "Error deleting note", data: error.message}))
+        }
+    }
 
 }

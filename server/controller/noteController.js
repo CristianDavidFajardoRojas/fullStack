@@ -115,7 +115,8 @@ exports.updateNoteById = async(req, res)=>{
  */
 exports.deleteNoteById = async(req, res)=>{
     try{
-
+        let result = await note.deleteNote(req.params.id, req.data._id);
+        return res.status(result.status).json(result);
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);
