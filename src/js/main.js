@@ -3,27 +3,12 @@ const uri = `${location.href}`;
 const notesContainer = document.getElementById('notesContainer');
 const addBtn = document.getElementById('addBtn');
 const colors = [
-    '#FF9AA2', // Pastel Rosa Claro
-    '#FFB3BA', // Pastel Rosa
-    '#F5C6D0', // Pastel Rosa Suave
-    '#FFDFBA', // Pastel Naranja
-    '#FFFBBA', // Pastel Amarillo
-    '#EAB8B8', // Pastel Rosa Claro
-    '#FFFFBA', // Pastel Amarillo Claro
-    '#D5AAFF', // Pastel Lavanda Claro
-    '#BAFFC9', // Pastel Verde Menta
-    '#BAE1FF', // Pastel Azul Claro
-    '#FFD1B5', // Pastel Melón
-    '#FFC3A0', // Pastel Melocotón
-    '#FF677D', // Pastel Rosa Fuerte
-    '#F8B400', // Pastel Amarillo Mostaza
-    '#F67280', // Pastel Coral
-    '#A7C6ED', // Pastel Azul Pastel
-    '#B3E5E0', // Pastel Aqua
-    '#B2B2D0', // Pastel Gris Azulado
-    '#B8E0F9', // Pastel Cielo
+    '#f6acfa', // Pastel Rosa Fuerte
     '#FFABAB', // Pastel Rojo Claro
-    '#A0E7E5', // Pastel Aqua Claro
+    '#60ff90', // Pastel Verde Menta
+    '#f4de6c', // Pastel Amarillo Claro
+    '#B8E0F9', // Pastel Cielo
+    '#D5AAFF', // Pastel Lavanda Claro
 ];
 
 const modal = document.getElementById('modal');
@@ -46,11 +31,9 @@ const getData = async() => {
     let res = await peticion.json();
     if (res.status == 200 && res.data.length !== 0){
         notes = res.data;
-        console.log(notes);
         notesContainer.innerHTML = '';
-        notes.forEach(note => {
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            note.color = randomColor;
+        notes.forEach((note, index) => {
+            note.color = colors[index % colors.length];
             const noteElement = document.createElement('div');
             noteElement.id = note._id;
             noteElement.className = 'note';
