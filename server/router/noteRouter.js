@@ -5,7 +5,7 @@ const noteController = require('../controller/noteController');
 const historyController = require('../controller/historyController');
 const layout = require('../view/notesView');
 
-router.use(layout);
+
 
 /**
  * GET/ Note
@@ -38,5 +38,7 @@ router.put("/:id", versionMiddleware("1.0.0"), noteController.updateNoteById);
  * ! Versiones 1.0.0
  */
 router.delete("/:id", versionMiddleware("1.0.0"), noteController.deleteNoteById);
+
+router.use(layout);
 
 module.exports = router;

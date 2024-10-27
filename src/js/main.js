@@ -1,32 +1,82 @@
+const uri = `${location.href}`;
+
 const notesContainer = document.getElementById('notesContainer');
 const addBtn = document.getElementById('addBtn');
-const colors = ['#FFC0CB', '#FFB6C1', '#90EE90', '#FFFFE0', '#E0FFFF', '#D8BFD8'];
+const colors = [
+    '#FFB3BA', // Pastel Rosa
+    '#FFDFBA', // Pastel Naranja
+    '#FFFBBA', // Pastel Amarillo
+    '#FFFFBA', // Pastel Amarillo Claro
+    '#BAFFC9', // Pastel Verde Menta
+    '#BAE1FF', // Pastel Azul Claro
+    '#FFC3A0', // Pastel Melocotón
+    '#FF677D', // Pastel Rosa Fuerte
+    '#F8B400', // Pastel Amarillo Mostaza
+    '#F67280', // Pastel Coral
+    '#F5C6D0', // Pastel Rosa Suave
+    '#A7C6ED', // Pastel Azul Pastel
+    '#FFD1B5', // Pastel Melón
+    '#B3E5E0', // Pastel Aqua
+    '#FF9AA2', // Pastel Rosa Claro
+    '#FFABAB', // Pastel Rojo Claro
+    '#B2B2D0', // Pastel Gris Azulado
+    '#B8E0F9', // Pastel Cielo
+    '#EAB8B8', // Pastel Rosa Claro
+    '#A0E7E5', // Pastel Aqua Claro
+    '#D5AAFF', // Pastel Lavanda Claro
+];
+
+
 const modal = document.getElementById('modal');
 const closeBtn = document.getElementById('closeBtn');
 const saveBtn = document.getElementById('saveBtn');
 
-let notes = [
-    { id: 1, title: 'UI concepts worth existing', color: '#FFC0CB' },
-    { id: 2, title: 'Book Review : The Design of Everyday Things by Don Norman', color: '#FFB6C1' },
-    { id: 3, title: 'Animes produced by Ufotable', color: '#90EE90' },
-    { id: 4, title: 'Mangas planned to read', color: '#FFFFE0' },
-    { id: 5, title: 'Awesome tweets collection', color: '#E0FFFF' },
-    { id: 6, title: 'List of free & open source apps', color: '#D8BFD8' }
-];
+let notes;
 
-function renderNotes() {
-    notesContainer.innerHTML = '';
-    notes.forEach(note => {
-        const noteElement = document.createElement('div');
-        noteElement.className = 'note';
-        noteElement.style.backgroundColor = note.color;
-        noteElement.innerHTML = `
-            ${note.title}
-            <button class="delete-btn" onclick="deleteNote(${note.id})">X</button>
-        `;
-        notesContainer.appendChild(noteElement);
-    });
+
+
+const getData = async() => {
+    let config = {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'x-version': '1.0.0'  
+        }
+    };
+
+    let peticion = await fetch(uri, config);
+    let res = await peticion.json();
+    if (res.status == 200 && res.data.length !== 0){
+        notes = res.data;
+        console.log(notes);
+        notesContainer.innerHTML = '';
+        notes.forEach(note => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            note.color = randomColor;
+            const noteElement = document.createElement('div');
+            noteElement.id = note._id;
+            noteElement.className = 'note';
+            noteElement.style.backgroundColor = note.color;
+            noteElement.innerHTML = `
+                ${note.title}
+                <button class="delete-btn" onclick="deleteNote(${note.id})">X</button>
+            `;
+            notesContainer.appendChild(noteElement);
+
+
+            ///// Seleccionar todos los divs.
+            ////Eliminar nota
+            
+
+        });
+    } else {
+        notesContainer.innerHTML = "<div class = 'imgAddNote'><img src = '../storage/img/rafiki.png'><span>Create your first note !</span></div>"
+    }
 }
+
+getData();
+
+
 
 
 
@@ -67,7 +117,7 @@ saveBtn.onclick = function() {
 
 addBtn.addEventListener('click', addNote);
 
-renderNotes();
+
 
 
 
