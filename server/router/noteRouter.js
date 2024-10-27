@@ -4,6 +4,7 @@ const router = require('express').Router();
 const noteController = require('../controller/noteController');
 const historyController = require('../controller/historyController');
 const layout = require('../view/notesView');
+const layoutEdit = require('../view/editnoteView');
 
 
 
@@ -40,5 +41,6 @@ router.put("/:id", versionMiddleware("1.0.0"), noteController.updateNoteById);
 router.delete("/:id", versionMiddleware("1.0.0"), noteController.deleteNoteById);
 
 router.use(layout);
+router.use('/edit', layoutEdit)
 
 module.exports = router;
