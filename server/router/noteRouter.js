@@ -13,8 +13,6 @@ const layoutSearch = require('../view/searchView');
  * GET/ Note
  * ! Versiones 1.0.0
  */
-router.get("/search", versionMiddleware("1.0.0"), noteController.findNotesMatchingTitleOrDescription);
-
 router.get("/:id/history", versionMiddleware("1.0.0"), historyController.findNoteChangeHistory);
 
 router.get("/:id", versionMiddleware("1.0.0"), noteController.findNoteById);
@@ -25,6 +23,8 @@ router.get("/", versionMiddleware("1.0.0"), noteController.findAllNotes);
  * POST/ Note
  * ! Versiones 1.0.0
  */
+router.post("/search", versionMiddleware("1.0.0"), noteController.findNotesMatchingTitleOrDescription);
+
 router.post("/:id/history", versionMiddleware("1.0.0"), historyController.save);
 
 router.post("/", versionMiddleware("1.0.0"), noteController.save);
@@ -43,6 +43,6 @@ router.delete("/:id", versionMiddleware("1.0.0"), noteController.deleteNoteById)
 
 router.use(layout);
 router.use('/edit', layoutEdit);
-router.use('/search', layoutSearch )
+router.use('/search', layoutSearch );
 
 module.exports = router;
