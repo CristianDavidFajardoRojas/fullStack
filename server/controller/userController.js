@@ -69,13 +69,14 @@ exports.signInUser = async(req, res)=>{
  */
 exports.logOutUser = async(req, res)=>{
     try{
-        req.session.destroy((err) => {
-            if (err) {
-                return res.status(500).send({status: 500, message: 'Error al cerrar sesión'});
-            }
-            res.clearCookie('connect.sid'); 
-            return res.status(200).send({status: 200, message: 'Sesión cerrada correctamente'});
-        });
+        const token = req.session.auth;
+        const SECRET_KEY = fs.readFileSync('./certificate.csr');
+        const decoded = jwt.verify(token, SECRET_KEY.toString('utf8'));
+        const {exp, iat, ...payload} = decoded;
+        const newToken = jwt.sign(payload, SECRET_KEY.toString('utf8'), {expiresIn: -9999});
+        req.session.auth = newToken;
+        req.session.auth.maxAge = .01 * 60 * 1000;
+        return res.status(200).send({status: 200, message: 'User Logged Out Succesfully'});
     }catch(error){
         let err = JSON.parse(error.message);
         return res.status(err.status).json(err.message);
