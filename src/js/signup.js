@@ -41,11 +41,9 @@ document.getElementById('signupForm').addEventListener('submit', async(event) =>
 
     let peticion = await fetch(urlPeticion, config);
     let res = await peticion.json();
-    console.log(res)
     alert(res.message);
-    if(res.status == 201) {
-        alert(res.status);
-        location.href = "/";
+    if(res.status == 202) {
+        location.href = "/notes";
     }
   
 
