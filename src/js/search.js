@@ -60,6 +60,7 @@ const getData = async() => {
                 notesDivs.forEach(noteDiv => {
                     const closeBtn = noteDiv.querySelector('.delete-btn');
                     closeBtn.addEventListener('click', async(e)=>{
+                        e.stopPropagation(); 
                         let configDelete = {
                             method: "DELETE",
                             headers: {

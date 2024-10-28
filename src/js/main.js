@@ -50,10 +50,21 @@ const getData = async() => {
             let notesDivs = document.querySelectorAll('.note')
 
 
+
+             ////Editar nota
+             notesDivs.forEach(noteDiv => {
+                noteDiv.addEventListener('click', async(e)=>{
+                    location.href = `notes/edit?id=${noteDiv.id}`                    
+                })
+            })            
+            //////////////////////////////////////////////////////////////////////////////////////
+
+
             ////Eliminar nota
             notesDivs.forEach(noteDiv => {
                 const closeBtn = noteDiv.querySelector('.delete-btn');
                 closeBtn.addEventListener('click', async(e)=>{
+                    e.stopPropagation(); 
                     let configDelete = {
                         method: "DELETE",
                         headers: {
@@ -70,13 +81,7 @@ const getData = async() => {
 
 
 
-            ////Editar nota
-            notesDivs.forEach(noteDiv => {
-                noteDiv.addEventListener('click', async(e)=>{
-                    location.href = `notes/edit?id=${noteDiv.id}`                    
-                })
-            })            
-            //////////////////////////////////////////////////////////////////////////////////////
+           
 
 
         });
