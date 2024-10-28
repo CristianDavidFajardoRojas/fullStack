@@ -373,3 +373,180 @@
 
 
 -------
+
+
+## Find Note By Title Or Desc.
+
+**Method** : `POST`
+
+**URL** : `http://localhost:3000/notes/search`
+
+**Auth required** : `False`
+
+**Headers** : 
+
+```json
+{ "Content-Type": "application/json", "x-version": "1.0.0" }
+
+```
+
+**body** :
+
+```json
+{
+  "text": "HAHAHA",
+}
+```
+
+**Responses**
+
+**Code** : `200 OK`
+
+```json
+{
+  "status": 200,
+  "message": "Note obtained",
+  "data": [
+  {
+      "_id": "671e41889c8029d0a435dddf",
+      "title": "Este es un ejemplo de un texto bastante largo, la idea es mirar que pasa si se estalla la wea xd",
+      "description": "XD<div><br></div><div>MAN PQ ESTA TAN CORTICO ESTE TEXTO HAHAHAHAHAHA HOLIIIIIIIIIIIIIII</div><div><br></div>",
+      "created_at": "2024-10-27T13:35:04.175Z",
+      "user_id": "671d107fe0fb5166d0adbbc6",
+      "estado": "visible"
+    },
+    ...
+]
+}
+```
+
+**Code** : `404 Not Found`
+
+```json
+{
+  "status": 404,
+  "message": "Note not found",
+  "data": []
+}
+```
+
+
+-------
+
+
+
+
+## Save Note.
+
+**Method** : `POST`
+
+**URL** : `http://localhost:3000/notes`
+
+**Auth required** : `False`
+
+**Headers** : 
+
+```json
+{ "Content-Type": "application/json", "x-version": "1.0.0" }
+
+```
+
+**body** :
+
+```json
+{
+    "title": "Otra prueba mas.",
+    "description": "Hola voy a tratar de agregar",
+  }
+```
+
+**Responses**
+
+**Code** : `201 Created`
+
+```json
+{
+  "status": 201,
+  "message": "Note Inserted Succesfully",
+}
+```
+
+
+-------
+
+
+
+
+
+
+
+## Update Note.
+
+**Method** : `PUT`
+
+**URL** : `http://localhost:3000/notes/:id`
+
+**Auth required** : `False`
+
+**Headers** : 
+
+```json
+{ "Content-Type": "application/json", "x-version": "1.0.0" }
+
+```
+
+**body** :
+
+```json
+{
+    "title": "Otra prueba mas, edicion prueba",
+    "description": "Hola voy a tratar de agregar",
+  }
+```
+
+**Responses**
+
+**Code** : `200 Okay`
+
+```json
+{
+  "status": 200,
+  "message": "Note Updated Succesfully",
+}
+```
+
+
+-------
+
+
+
+
+## Delete Note.
+
+**Method** : `DELETE`
+
+**URL** : `http://localhost:3000/notes/:id`
+
+**Auth required** : `False`
+
+**Headers** : 
+
+```json
+{ "Content-Type": "application/json", "x-version": "1.0.0" }
+
+```
+
+
+**Responses**
+
+**Code** : `200 Ok`
+
+```json
+{
+  "status": 200,
+  "message": "Note Deleted Succesfully",
+}
+```
+
+
+-------
