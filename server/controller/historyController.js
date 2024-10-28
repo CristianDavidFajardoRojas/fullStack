@@ -8,8 +8,7 @@ const history = new History();
  */
 exports.save = async(req, res)=>{
     try{
-        
-        let result = await history.insertHistory(req.body);
+        let result = await history.insertHistory(req.body, req.params.id);
         return res.status(result.status).json(result);
     }catch(error){
         let err = JSON.parse(error.message);

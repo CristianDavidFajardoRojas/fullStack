@@ -11,7 +11,7 @@ module.exports = class History extends connect {
         try {
             const { status, message, data: db} = await this.getConnect();
             const collection = db.collection('history');
-            const [ result ] = await collection.find({note_id: new ObjectId(idNote), user_id: new ObjectId(idUser)}).toArray();
+            const  result  = await collection.find({note_id: new ObjectId(idNote), user_id: new ObjectId(idUser)}).toArray();
             if(result) return{status: 200, message: "History obtained", data: result};
             return {status: 404, message: "History not found", data: result};
         } catch (error) {
