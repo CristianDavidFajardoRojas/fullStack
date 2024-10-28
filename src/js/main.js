@@ -2,6 +2,7 @@ const uri = `${location.href}`;
 
 const notesContainer = document.getElementById('notesContainer');
 const addBtn = document.getElementById('addBtn');
+const searchImg = document.querySelector('#searchImg')
 const colors = [
     '#f6acfa', // Pastel Rosa Fuerte
     '#FFABAB', // Pastel Rojo Claro
@@ -87,7 +88,9 @@ const getData = async() => {
 getData();
 
 
-
+searchImg.addEventListener('click', async() => {
+    location.href = 'notes/search';
+})
 
 
 ///////
