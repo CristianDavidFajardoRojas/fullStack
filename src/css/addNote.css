@@ -109,3 +109,25 @@ body {
     background-color: #4CAF50;
     color: white;
 }
+
+.buttons-div {
+    display: flex;
+    gap: 15px;
+}
+
+.buttons-div > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px; /* Ancho del botón */
+    height: 35px; /* Alto del botón */
+    border: none; /* Sin borde */
+    background-color: #1a1a1a; /* Color de fondo */
+    border-radius: 5px;
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+.buttons-div > button > img{
+    max-width: 100%; 
+    max-height: 100%; 
+}

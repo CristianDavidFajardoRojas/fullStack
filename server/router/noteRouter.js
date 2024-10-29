@@ -6,6 +6,7 @@ const historyController = require('../controller/historyController');
 const layout = require('../view/notesView');
 const layoutEdit = require('../view/editnoteView');
 const layoutSearch = require('../view/searchView');
+const layoutAdd = require('../view/addnoteView');
 
 
 
@@ -42,6 +43,7 @@ router.put("/:id", versionMiddleware("1.0.0"), noteController.updateNoteById);
 router.delete("/:id", versionMiddleware("1.0.0"), noteController.deleteNoteById);
 
 router.use(layout);
+router.use('/addNote', layoutAdd);
 router.use('/edit', layoutEdit);
 router.use('/search', layoutSearch );
 
