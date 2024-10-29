@@ -100,51 +100,7 @@ searchImg.addEventListener('click', async() => {
 
 ///////
 function addNote() {
-    modal.style.display = 'block'; // Mostrar el modal
-}
-
-closeBtn.onclick = function() {
-    modal.style.display = 'none'; // Cerrar el modal
-}
-
-window.onclick = function(event) {
-    if (event.target === modal) {
-        modal.style.display = 'none'; // Cerrar si se hace clic fuera del modal
-    }
-}
-
-saveBtn.onclick = async() => {
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-
-    if (title && description) {
-        let dataInsert = {
-            title: title,
-            description: description
-        }
-        let configInsert = {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'x-version': '1.0.0'  
-            },
-            body: JSON.stringify(dataInsert)
-        };
-
-        
-        let peticionInsert = await fetch(`${uri}` , configInsert);
-        let resInsert = await peticionInsert.json();
-        alert(resInsert.message);   
-        
-        
-        // Limpiar campos y cerrar el modal
-        document.getElementById('title').value = '';
-        document.getElementById('description').value = '';
-        modal.style.display = 'none';
-        getData();
-    } else {
-        alert('Por favor, completa ambos campos.');
-    }
+    location.href = 'notes/addNote' // Mostrar el modal
 }
 
 ///////
