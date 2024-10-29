@@ -7,6 +7,9 @@ document.getElementById('signupForm').addEventListener('submit', async(event) =>
     const nickname = document.getElementById('nickname').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
+    const modal = document.getElementById('modal');
+    const saveBtn = document.querySelector('.save');
+    const textModal = document.querySelector('.text-model');   
 
     const nicknameRegex = /^[a-zA-Z0-9]+$/;
     if (!nicknameRegex.test(nickname)) {
@@ -41,10 +44,17 @@ document.getElementById('signupForm').addEventListener('submit', async(event) =>
 
     let peticion = await fetch(urlPeticion, config);
     let res = await peticion.json();
-    alert(res.message);
-    if(res.status == 202) {
-        location.href = "/notes";
-    }
   
+
+    textModal.textContent = res.message
+    modal.style.display = 'block';
+
+    saveBtn.addEventListener('click', ()=> {
+        if(res.status == 202) {
+            location.href = "/notes";
+        }else {
+            modal.style.display = 'none';
+        }
+    })
 
 });
