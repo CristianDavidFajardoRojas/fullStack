@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor</title>
+    <link rel="stylesheet" href="../css/addNote.css">
+    <script defer src="../js/addNote.js" type="module"></script>
+  
+</head>
+<body>
+    <div class="top-bar">
+        <button id="backBtn"><img src="../storage/img/chevron_left.png" alt=""></button>
+        <div>
+            <button id="previewBtn"><img src="../storage/img/visibility.png" alt=""></button>
+            <button id="imageBtn"><img src="../storage/img/save.png" alt=""></button>
+        </div>
+    </div>
+    <div class="editor-container">
+        <input type="text" class="title-input" placeholder="Title">
+        <textarea class="content-input" placeholder="Type something..."></textarea>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p>Note Added Succesfully</p>
+            <div class="modal-buttons">
+                <button class="save">Ok</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
