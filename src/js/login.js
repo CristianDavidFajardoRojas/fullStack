@@ -1,4 +1,4 @@
-const uri = `https://full-stack-tau-seven.vercel.app/users`;
+const uri = `https://full-stack-tau-seven.vercel.app/users/login`;
 
 const modal = document.getElementById('modal');
 const saveBtn = document.querySelector('.save');
