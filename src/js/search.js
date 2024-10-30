@@ -1,4 +1,4 @@
-const uri = `${location.href}`;
+const uri = `https://full-stack-tau-seven.vercel.app/notes`;
 
 const notesContainer = document.getElementById('notesContainer');
 const searchInput = document.getElementById('searchInput');
@@ -14,7 +14,7 @@ const colors = [
 
 let notes;
 backButton.addEventListener('click', async()=>{
-    location.href = '/notes'
+    location.href = 'index.html'
 })
 
 const getData = async() => {
@@ -80,7 +80,7 @@ const getData = async() => {
                 ////Editar nota
                 notesDivs.forEach(noteDiv => {
                     noteDiv.addEventListener('click', async(e)=>{
-                        location.href = `edit?id=${noteDiv.id}`                    
+                        location.href = `editNote.html?id=${noteDiv.id}`                    
                     })
                 })            
                 //////////////////////////////////////////////////////////////////////////////////////

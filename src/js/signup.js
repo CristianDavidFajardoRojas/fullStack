@@ -51,7 +51,7 @@ document.getElementById('signupForm').addEventListener('submit', async(event) =>
 
     saveBtn.addEventListener('click', ()=> {
         if(res.status == 202) {
-            location.href = "/notes";
+            location.href = "index.html";
         }else {
             modal.style.display = 'none';
         }

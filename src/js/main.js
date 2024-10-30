@@ -1,4 +1,4 @@
-const uri = `${location.href}`;
+const uri = `https://full-stack-tau-seven.vercel.app/notes`;
 
 const notesContainer = document.getElementById('notesContainer');
 const addBtn = document.getElementById('addBtn');
@@ -54,7 +54,7 @@ const getData = async() => {
              ////Editar nota
              notesDivs.forEach(noteDiv => {
                 noteDiv.addEventListener('click', async(e)=>{
-                    location.href = `notes/edit?id=${noteDiv.id}`                    
+                    location.href = `editNote?id=${noteDiv.id}`                    
                 })
             })            
             //////////////////////////////////////////////////////////////////////////////////////
@@ -94,13 +94,13 @@ getData();
 
 
 searchImg.addEventListener('click', async() => {
-    location.href = 'notes/search';
+    location.href = 'search,html';
 })
 
 
 ///////
 function addNote() {
-    location.href = 'notes/addNote' // Mostrar el modal
+    location.href = 'addNote.html' // Mostrar el modal
 }
 
 ///////

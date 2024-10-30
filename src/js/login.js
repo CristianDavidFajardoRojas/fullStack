@@ -1,4 +1,4 @@
-const uri = `${location.href}`;
+const uri = `https://full-stack-tau-seven.vercel.app/users`;
 
 const modal = document.getElementById('modal');
 const saveBtn = document.querySelector('.save');
@@ -32,7 +32,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
 
     saveBtn.addEventListener('click', ()=> {
         if(res.status == 200) {
-            location.href = "/notes";
+            location.href = "index.html";
         }else {
             modal.style.display = 'none';
         }

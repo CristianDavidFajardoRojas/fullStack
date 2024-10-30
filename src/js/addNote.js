@@ -1,5 +1,4 @@
-const uriWindows = `${location.href}`;
-const uri = uriWindows.split('/notes')[0] + '/notes';
+const uri = `https://full-stack-tau-seven.vercel.app/notes`;
 
 const backBtn = document.getElementById('backBtn');
 const previewBtn = document.getElementById('previewBtn');
@@ -10,7 +9,7 @@ const modal = document.getElementById('modal');
 const saveBtn = document.querySelector('.save');
 
 backBtn.addEventListener('click', () => {
-    location.href = '/notes'
+    location.href = 'index.html'
 });
 
 previewBtn.addEventListener('click', () => {
@@ -40,7 +39,7 @@ imageBtn.addEventListener('click', async() => {
         if(resInsert.status == 201){
             modal.style.display = 'block';
             saveBtn.addEventListener('click', ()=>{
-                location.href = '/notes'
+                location.href = 'index.html'
             })
         }
         
