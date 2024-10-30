@@ -10,9 +10,7 @@ const layoutSignUp = require('../view/signupView');
 // Las rutas con parámetros se ubican en tercer lugar.
 // Las rutas sin parámetros se colocan en cuarto lugar.
 
-router.use(layoutOpenning);
-router.use('/login', layoutLogin);
-router.use('/signup', layoutSignUp);
+
 
 router.post("/login", versionMiddleware("1.0.0"), userController.signInUser);
 router.post("/logout", versionMiddleware("1.0.0"), userController.logOutUser);
@@ -20,5 +18,11 @@ router.post("/", versionMiddleware("1.0.0"), userController.addNewUser);
 
 router.put("/:id", versionMiddleware("1.0.0"), userController.updateUserById);
 router.delete("/:id", versionMiddleware("1.0.0"), userController.deleteUserById);
+
+
+router.use(layoutOpenning);
+router.use('/login', layoutLogin);
+router.use('/signup', layoutSignUp);
+
 
 module.exports = router;
