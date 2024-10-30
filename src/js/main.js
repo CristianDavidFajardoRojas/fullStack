@@ -54,7 +54,7 @@ const getData = async() => {
              ////Editar nota
              notesDivs.forEach(noteDiv => {
                 noteDiv.addEventListener('click', async(e)=>{
-                    location.href = `editNote?id=${noteDiv.id}`                    
+                    location.href = `editNote.html?id=${noteDiv.id}`                    
                 })
             })            
             //////////////////////////////////////////////////////////////////////////////////////
@@ -94,7 +94,7 @@ getData();
 
 
 searchImg.addEventListener('click', async() => {
-    location.href = 'search,html';
+    location.href = 'search.html';
 })
 
 

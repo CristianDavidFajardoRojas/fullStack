@@ -33,7 +33,7 @@ imageBtn.addEventListener('click', async() => {
         };
     
         console.log(JSON.stringify(dataInsert))
-        let peticionInsert = await fetch(`${uri}` , configInsert);
+        let peticionInsert = await fetch(uri , configInsert);
         let resInsert = await peticionInsert.json(); 
         
         if(resInsert.status == 201){
