@@ -1,9 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const userRouters = require('./server/router/userRouter');
 const noteRouters = require('./server/router/noteRouter');
 const error = require('./server/middleware/errorHandler');
 const session = require('./server/middleware/sessionConfig');
 const { auth } = require('./server/middleware/decodedJWT');
+
 // const { join } = require('path');
 
 // const https = require('https');
@@ -18,7 +20,7 @@ const app = express();
 // app.use('/js', express.static(join(__dirname, 'src/js')))
 // app.use('/storage', express.static(join(__dirname, 'src/storage')))
 
-
+app.use(cors())
 app.use(express.json());
 app.use(session);
 app.use(error.jsonParseErrorHandler);
