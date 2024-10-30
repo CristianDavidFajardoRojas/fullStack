@@ -19,8 +19,8 @@ exports.addNewUser = async(req, res)=>{
         if(resultPOST.status !== 201) return res.status(resultPOST.status).json(resultPOST);
         delete req.body.password;
         req.body._id = resultPOST.data.insertedId;
-        const SECRET_KEY =  'tu_clave_secreta_aqui';
-        const token = jwt.sign(req.body, SECRET_KEY.toString('utf8'), {expiresIn: 1800000});
+        // const SECRET_KEY =  'tu_clave_secreta_aqui';
+        const token = jwt.sign(req.body, process.env.EXPRESS_SECRET_KEY, {expiresIn: 1800000});
         req.session.auth = token;
         return res.status(202).json({status: 202, message: 'User created succesfully'});
     }catch(error){
@@ -46,8 +46,8 @@ exports.signInUser = async(req, res)=>{
         if(!resEmailAndPassword) return res.status(406).json({status: 406, message: "Invalid password"});
 
         delete resultGetByEmail.data.password;
-        const SECRET_KEY =  'tu_clave_secreta_aqui';
-        const token = jwt.sign(resultGetByEmail.data, SECRET_KEY.toString('utf8'), {expiresIn: 1800000});
+        // const SECRET_KEY =  'tu_clave_secreta_aqui';
+        const token = jwt.sign(resultGetByEmail.data, process.env.EXPRESS_SECRET_KEY, {expiresIn: 1800000});
         req.session.auth = token;
 
         return res.status(resultGetByEmail.status).json({status: resultGetByEmail.status, message: 'You have successfully logged in'})
@@ -70,8 +70,8 @@ exports.signInUser = async(req, res)=>{
 exports.logOutUser = async(req, res)=>{
     try{
         const token = req.session.auth;
-        const SECRET_KEY = 'tu_clave_secreta_aqui';
-        const decoded = jwt.verify(token, SECRET_KEY.toString('utf8'));
+        // const SECRET_KEY = 'tu_clave_secreta_aqui';
+        const decoded = jwt.verify(token, process.env.EXPRESS_SECRET_KEY);
         const {exp, iat, ...payload} = decoded;
         const newToken = jwt.sign(payload, SECRET_KEY.toString('utf8'), {expiresIn: -9999});
         req.session.auth = newToken;

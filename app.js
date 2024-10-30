@@ -48,7 +48,7 @@ const config = {
     port: process.env.EXPRESS_PORT,
 }
 app.listen(config, () => {
-    console.log('http://localhost:3000/users');
+    console.log(`http://${config.host}:${config.port}/users`);
 });
 // httpsServer.listen(3000, () => {
 //     console.log('https://localhost:3000/users');

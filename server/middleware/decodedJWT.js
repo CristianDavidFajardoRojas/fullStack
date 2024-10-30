@@ -3,8 +3,8 @@ const fs = require('fs');
 
 exports.auth = async(req, res, next)=>{
     try{
-        const SECRET_KEY =  'tu_clave_secreta_aqui';
-        var payload = jwt.verify(req.session.auth, SECRET_KEY.toString('utf8'));
+        // const SECRET_KEY =  'tu_clave_secreta_aqui';
+        var payload = jwt.verify(req.session.auth, process.env.EXPRESS_SECRET_KEY);
         req.data = payload;
         next();
     }catch(error){
