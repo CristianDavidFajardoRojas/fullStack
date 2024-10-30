@@ -1,4 +1,4 @@
-const uri = `http://full-stack-tau-seven.vercel.app`;
+const uri = `https://full-stack-tau-seven.vercel.app`;
 
 document.getElementById('signupForm').addEventListener('submit', async(event) => {
     event.preventDefault();
