@@ -25,7 +25,8 @@ const getData = async() => {
         headers: {
             'Content-Type': 'application/json',
             'x-version': '1.0.0'  
-        }
+        },
+        credentials: 'include'
     };
 
     let peticion = await fetch(uri, config);
@@ -70,7 +71,8 @@ const getData = async() => {
                         headers: {
                             'Content-Type': 'application/json',
                             'x-version': '1.0.0'  
-                        }
+                        },
+                        credentials: 'include'
                     };
                     let peticionDelete = await fetch(`${uri}/${noteDiv.id}` , configDelete);
                     getData();

@@ -37,7 +37,8 @@ document.getElementById('signupForm').addEventListener('submit', async(event) =>
             'Content-Type': 'application/json',
             'x-version': '1.0.0'  
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
+        credentials: 'include'
     };
 
     let urlPeticion = `${uri}/users`;

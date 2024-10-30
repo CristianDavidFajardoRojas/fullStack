@@ -20,7 +20,10 @@ const app = express();
 // app.use('/js', express.static(join(__dirname, 'src/js')))
 // app.use('/storage', express.static(join(__dirname, 'src/storage')))
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://cris-fr.github.io', // Agrega localhost si es necesario
+    credentials: true
+  }));
 app.use(express.json());
 app.use(session);
 app.use(error.jsonParseErrorHandler);

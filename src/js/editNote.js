@@ -18,7 +18,8 @@ const getData = async () => {
         headers: {
             'Content-Type': 'application/json',
             'x-version': '1.0.0'  
-        }
+        },
+        credentials: 'include'
     };
 
     let peticion = await fetch(`${uri}/${idNote}`, config);
@@ -57,7 +58,8 @@ const getData = async () => {
                 'Content-Type': 'application/json',
                 'x-version': '1.0.0'  
             },
-            body: JSON.stringify(res.data)
+            body: JSON.stringify(res.data),
+            credentials: 'include'
         };
     
         let peticionHisotrial = await fetch(`${uri}/${idNote}/history`, config);
@@ -76,7 +78,8 @@ const getData = async () => {
                 'Content-Type': 'application/json',
                 'x-version': '1.0.0'  
             },
-            body: JSON.stringify(dataUpdate)
+            body: JSON.stringify(dataUpdate),
+            credentials: 'include'
         };
     
         let peticionUpdate = await fetch(`${uri}/${idNote}`, configUpdate);

@@ -29,7 +29,8 @@ imageBtn.addEventListener('click', async() => {
                 'Content-Type': 'application/json',
                 'x-version': '1.0.0'  
             },
-            body: JSON.stringify(dataInsert)
+            body: JSON.stringify(dataInsert),
+            credentials: 'include'
         };
     
         console.log(JSON.stringify(dataInsert))

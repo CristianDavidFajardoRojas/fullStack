@@ -28,7 +28,8 @@ const getData = async() => {
                 'Content-Type': 'application/json',
                 'x-version': '1.0.0'  
             },
-            body: JSON.stringify({text: searchInput.value})
+            body: JSON.stringify({text: searchInput.value}),
+            credentials: 'include'
         };
     
         let peticion = await fetch(uri, config);
@@ -66,7 +67,8 @@ const getData = async() => {
                             headers: {
                                 'Content-Type': 'application/json',
                                 'x-version': '1.0.0'  
-                            }
+                            },
+                            credentials: 'include'
                         };
                         let peticionDelete = await fetch(`${uri}/${noteDiv.id}` , configDelete);
                         getData();
