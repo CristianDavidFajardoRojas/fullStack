@@ -1,4 +1,4 @@
-const uri = `${location.href}`;
+const uri = `http://full-stack-tau-seven.vercel.app`;
 
 document.getElementById('signupForm').addEventListener('submit', async(event) => {
     event.preventDefault();
@@ -40,7 +40,7 @@ document.getElementById('signupForm').addEventListener('submit', async(event) =>
         body: JSON.stringify(data)
     };
 
-    let urlPeticion = uri.replace(/\/signup$/, '');
+    let urlPeticion = `${uri}/users`;
 
     let peticion = await fetch(urlPeticion, config);
     let res = await peticion.json();
