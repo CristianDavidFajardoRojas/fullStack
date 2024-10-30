@@ -8,7 +8,7 @@ module.exports = class Connect {
 
   async getConnect() {
     try {
-      const client = await MongoClient.connect(this.url);
+      const client = await MongoClient.connect(`mongodb://mongo:XWBgXnrciaHFmXASMMMiUnCwkWijzdhh@autorack.proxy.rlwy.net:56592`); 
       const db = client.db(this.dbName);
       return {
         status: 200,
