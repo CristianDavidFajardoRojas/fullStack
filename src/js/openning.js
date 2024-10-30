@@ -1,7 +1,7 @@
 document.querySelector('.login-btn').addEventListener('click', function() {
-    location.href = 'users/login'
+    location.href = 'login.html'
 });
 
 document.querySelector('.signup-btn').addEventListener('click', function() {
-    location.href = 'users/signup'
+    location.href = 'signup.html'
 });
