@@ -7,5 +7,5 @@ module.exports = session({
     secret: process.env.EXPRESS_SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false, maxAge: 1800000 },
+    cookie: { secure: false, sameSite: 'None',  maxAge: 1800000 },
 })

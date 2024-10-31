@@ -27,7 +27,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     let res = await peticion.json();
     
 
-    console.log(textModal)
+    
     textModal.textContent = res.message
     modal.style.display = 'block';
 
