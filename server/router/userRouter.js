@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const userController = require('../controller/userController');
 const versionMiddleware = require('../middleware/versionate');
-const layoutOpenning = require('../view/userView');
-const layoutLogin = require('../view/loginView');
-const layoutSignUp = require('../view/signupView');
+// const layoutOpenning = require('../view/userView');
+// const layoutLogin = require('../view/loginView');
+// const layoutSignUp = require('../view/signupView');
 
 // Las rutas que preceden a otras rutas tienen prioridad.
 // Las rutas con parámetros, seguidas por otra ruta, ocupan el segundo lugar.
@@ -20,9 +20,9 @@ router.put("/:id", versionMiddleware("1.0.0"), userController.updateUserById);
 router.delete("/:id", versionMiddleware("1.0.0"), userController.deleteUserById);
 
 
-router.use(layoutOpenning);
-router.use('/login', layoutLogin);
-router.use('/signup', layoutSignUp);
+// router.use(layoutOpenning);
+// router.use('/login', layoutLogin);
+// router.use('/signup', layoutSignUp);
 
 
 module.exports = router;
