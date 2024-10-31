@@ -6,6 +6,10 @@ const error = require('./server/middleware/errorHandler');
 const session = require('./server/middleware/sessionConfig');
 const { auth } = require('./server/middleware/decodedJWT');
 
+const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+const redis = require('redis');
+
 // const { join } = require('path');
 
 // const https = require('https');
