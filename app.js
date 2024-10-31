@@ -21,7 +21,7 @@ const app = express();
 // app.use('/storage', express.static(join(__dirname, 'src/storage')))
 
 app.use(cors({
-    origin: 'https://cris-fr.github.io', // Agrega localhost si es necesario
+    origin: ['https://cris-fr.github.io', 'https://full-stack-tau-seven.vercel.app'], // Agrega localhost si es necesario
     credentials: true
   }));
   app.use(session);

@@ -6,7 +6,7 @@ const fs = require('fs');
 module.exports = session({
     secret: process.env.EXPRESS_SECRET_KEY,
     resave: true,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
         secure: false, // Asegúrate de usar 'true' si estás en HTTPS
         maxAge: 1800000
