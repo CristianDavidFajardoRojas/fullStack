@@ -7,5 +7,10 @@ module.exports = session({
     secret: process.env.EXPRESS_SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false, sameSite: 'None',  maxAge: 1800000 },
+    cookie: {
+        secure: true, // Asegúrate de usar 'true' si estás en HTTPS
+        sameSite: 'None',
+        maxAge: 1800000,
+        domain: '.github.io', // Permitir que la cookie se comparta en todos los subdominios
+    },
 })
