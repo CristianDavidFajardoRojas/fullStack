@@ -9,7 +9,6 @@ module.exports = session({
     saveUninitialized: true,
     cookie: {
         secure: false, // Asegúrate de usar 'true' si estás en HTTPS
-        sameSite: 'None',
         maxAge: 1800000
     }
 })
