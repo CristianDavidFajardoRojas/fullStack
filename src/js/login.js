@@ -43,7 +43,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
                 credentials: 'include'
             };
         
-            let peticion = await fetch(uri, config);
+            let peticion = await fetch(`https://full-stack-tau-seven.vercel.app/notes`, config);
             let res = await peticion.json();
             console.log(res)
         }else {
