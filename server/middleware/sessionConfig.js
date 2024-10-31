@@ -8,8 +8,8 @@ module.exports = session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: true, // Asegúrate de usar 'true' si estás en HTTPS
+        secure: false, // Asegúrate de usar 'true' si estás en HTTPS
         sameSite: 'None',
-        maxAge: 1800000,
-    },
+        maxAge: 1800000
+    }
 })
