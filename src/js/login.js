@@ -31,9 +31,21 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
     textModal.textContent = res.message
     modal.style.display = 'block';
 
-    saveBtn.addEventListener('click', ()=> {
+    saveBtn.addEventListener('click', async()=> {
         if(res.status == 200) {
-            location.href = "index.html";
+            // location.href = "index.html";
+            let config = {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-version': '1.0.0'  
+                },
+                credentials: 'include'
+            };
+        
+            let peticion = await fetch(uri, config);
+            let res = await peticion.json();
+            console.log(res)
         }else {
             modal.style.display = 'none';
         }
