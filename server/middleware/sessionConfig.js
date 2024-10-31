@@ -11,6 +11,5 @@ module.exports = session({
         secure: true, // Asegúrate de usar 'true' si estás en HTTPS
         sameSite: 'None',
         maxAge: 1800000,
-        domain: '.github.io', // Permitir que la cookie se comparta en todos los subdominios
     },
 })
