@@ -4,6 +4,7 @@ const fs = require('fs');
 exports.auth = async(req, res, next)=>{
     try{
         // const SECRET_KEY =  'tu_clave_secreta_aqui';
+        console.log(req.session.auth);
         var payload = jwt.verify(req.session.auth, process.env.EXPRESS_SECRET_KEY);
         req.data = payload;
         next();
