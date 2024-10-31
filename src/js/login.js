@@ -33,19 +33,7 @@ document.getElementById('loginForm').addEventListener('submit', async (event) =>
 
     saveBtn.addEventListener('click', async()=> {
         if(res.status == 200) {
-            // location.href = "index.html";
-            let config = {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'x-version': '1.0.0'  
-                },
-                credentials: 'include'
-            };
-        
-            let peticion = await fetch(`https://full-stack-tau-seven.vercel.app/notes`, config);
-            let res = await peticion.json();
-            console.log(res)
+            location.href = "index.html";  
         }else {
             modal.style.display = 'none';
         }
