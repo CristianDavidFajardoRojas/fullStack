@@ -1,10 +1,54 @@
+# Despliegue Local
+
+Sigue estos pasos para desplegar el servidor en tu máquina local:
+
+1. **Entra en la rama 'local':**
+
+ ```bash
+
+  git checkout local
+
+ ```
+
+
+2. **Instala las dependencias:**
+
+ ```bash
+
+  npm i
+
+ ```
+
+3. **Crea un archivo `.env` y coloca:**
+
+ ```bash
+
+  MONGO_URI=mongodb://mongo:XWBgXnrciaHFmXASMMMiUnCwkWijzdhh@autorack.proxy.rlwy.net:56592
+  MONGO_DB=notesApp
+  
+  EXPRESS_HOST=localhost
+  EXPRESS_PORT=3000
+
+ ```
+
+4. **Inicia el servidor:**
+
+ ```bash
+
+  npm run start 
+
+ ```
+
+
+------------------------------------
+
 # USERS
 
 ## Sign in.
 
 **Method** : `POST`
 
-**URL** : `http://localhost:3000/users/login`
+**URL** : `https://full-stack-tau-seven.vercel.app/users/login`
 
 **Auth required** : `False`
 
@@ -61,7 +105,7 @@
 
 **Method** : `POST`
 
-**URL** : `http://localhost:3000/users/logout`
+**URL** : `https://full-stack-tau-seven.vercel.app/users/logout`
 
 **Auth required** : `False`
 
@@ -90,7 +134,7 @@
 
 **Method** : `POST`
 
-**URL** : `http://localhost:3000/users`
+**URL** : `https://full-stack-tau-seven.vercel.app/users`
 
 **Auth required** : `False`
 
@@ -161,7 +205,7 @@
 
 **Method** : `PUT`
 
-**URL** : `http://localhost:3000/users/:id`
+**URL** : `https://full-stack-tau-seven.vercel.app/users/:id`
 
 **Auth required** : `False`
 
@@ -228,7 +272,7 @@
 
 **Method** : `GET`
 
-**URL** : `http://localhost:3000/notes/:id/history`
+**URL** : `https://full-stack-tau-seven.vercel.app/notes/:id/history`
 
 **Auth required** : `False`
 
@@ -276,7 +320,7 @@
 
 **Method** : `GET`
 
-**URL** : `http://localhost:3000/notes/:id`
+**URL** : `https://full-stack-tau-seven.vercel.app/notes/:id`
 
 **Auth required** : `False`
 
@@ -328,7 +372,7 @@
 
 **Method** : `GET`
 
-**URL** : `http://localhost:3000/notes/`
+**URL** : `https://full-stack-tau-seven.vercel.app/notes/`
 
 **Auth required** : `False`
 
@@ -379,7 +423,7 @@
 
 **Method** : `POST`
 
-**URL** : `http://localhost:3000/notes/search`
+**URL** : `https://full-stack-tau-seven.vercel.app/notes/search`
 
 **Auth required** : `False`
 
@@ -440,7 +484,7 @@
 
 **Method** : `POST`
 
-**URL** : `http://localhost:3000/notes`
+**URL** : `https://full-stack-tau-seven.vercel.app/notes`
 
 **Auth required** : `False`
 
@@ -484,7 +528,7 @@
 
 **Method** : `PUT`
 
-**URL** : `http://localhost:3000/notes/:id`
+**URL** : `https://full-stack-tau-seven.vercel.app/notes/:id`
 
 **Auth required** : `False`
 
@@ -525,7 +569,7 @@
 
 **Method** : `DELETE`
 
-**URL** : `http://localhost:3000/notes/:id`
+**URL** : `https://full-stack-tau-seven.vercel.app/notes/:id`
 
 **Auth required** : `False`
 
