@@ -8,6 +8,7 @@ const layoutEdit = require('../view/editnoteView');
 const layoutSearch = require('../view/searchView');
 const layoutAdd = require('../view/addnoteView');
 const {limit} = require('../middleware/limit');
+const validator = require('../validator/noteValidator');
 
 
 
@@ -29,13 +30,13 @@ router.post("/search", limit('post'), versionMiddleware("1.0.0"), noteController
 
 router.post("/:id/history", limit('post'), versionMiddleware("1.0.0"), historyController.save);
 
-router.post("/", limit('post'), versionMiddleware("1.0.0"), noteController.save);
+router.post("/", limit('post'), versionMiddleware("1.0.0"), validator.createNote, noteController.save);
 
 /**
  * PUT/ Note
  * ! Versiones 1.0.0
  */
-router.put("/:id", limit('put'), versionMiddleware("1.0.0"), noteController.updateNoteById);
+router.put("/:id", limit('put'), versionMiddleware("1.0.0"), validator.updateNote, noteController.updateNoteById);
 
 /**
  * DELETE/ Note

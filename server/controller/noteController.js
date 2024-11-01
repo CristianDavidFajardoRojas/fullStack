@@ -1,6 +1,7 @@
 const { re } = require('semver');
 const Note = require('../model/noteModel')
 const note = new Note();
+const { validationResult } = require("express-validator");
 
 /**
  * 
@@ -74,6 +75,14 @@ exports.findNotesMatchingTitleOrDescription = async(req, res)=>{
  */
 exports.save = async(req, res)=>{
     try{
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        return res.status(400).json({
+            status: 400,
+            message: "Validation errors",
+            data: errors.array(),
+        });
+    }
         req.body.created_at = new Date()
         req.body.user_id = req.data._id
         req.body.estado = 'visible'
@@ -95,6 +104,14 @@ exports.save = async(req, res)=>{
  */
 exports.updateNoteById = async(req, res)=>{
     try{
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        return res.status(400).json({
+            status: 400,
+            message: "Validation errors",
+            data: errors.array(),
+        });
+    }
         let result = await note.updateNote(req.params.id, req.data._id, req.body);
         return res.status(result.status).json(result);
     }catch(error){
