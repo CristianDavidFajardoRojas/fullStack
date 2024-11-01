@@ -5,6 +5,7 @@ const layoutOpenning = require('../view/userView');
 const layoutLogin = require('../view/loginView');
 const layoutSignUp = require('../view/signupView');
 const {limit} = require('../middleware/limit');
+const validator = require('../validator/userValidator');
 
 // Las rutas que preceden a otras rutas tienen prioridad.
 // Las rutas con parámetros, seguidas por otra ruta, ocupan el segundo lugar.
@@ -15,11 +16,11 @@ router.use(layoutOpenning);
 router.use('/login', layoutLogin);
 router.use('/signup', layoutSignUp);
 
-router.post("/login", limit('post', '/login'), versionMiddleware("1.0.0"), userController.signInUser);
+router.post("/login", limit('post', '/login'), versionMiddleware("1.0.0"), validator.logIn, userController.signInUser);
 router.post("/logout", limit('post'), versionMiddleware("1.0.0"), userController.logOutUser);
-router.post("/", limit('post'), versionMiddleware("1.0.0"), userController.addNewUser);
+router.post("/", limit('post'), versionMiddleware("1.0.0"), validator.createAccount, userController.addNewUser);
 
-router.put("/:id", limit('put'), versionMiddleware("1.0.0"), userController.updateUserById);
+router.put("/:id", limit('put'), versionMiddleware("1.0.0"), validator.update, userController.updateUserById);
 router.delete("/:id", limit('delete'), versionMiddleware("1.0.0"), userController.deleteUserById);
 
 module.exports = router;

@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const User = require('../model/userModel');
 const user = new User();
+const { validationResult } = require("express-validator");
 
 /**
  * 
@@ -14,6 +15,15 @@ const user = new User();
  */
 exports.addNewUser = async(req, res)=>{
     try{
+        
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        return res.status(400).json({
+            status: 400,
+            message: "Validation errors",
+            data: errors.array(),
+        });
+    }
         req.body.password = await bcrypt.hash(req.body.password, 10);
         let resultPOST = await user.save(req.body);
         if(resultPOST.status !== 201) return res.status(resultPOST.status).json(resultPOST);
@@ -40,6 +50,14 @@ exports.addNewUser = async(req, res)=>{
  */
 exports.signInUser = async(req, res)=>{
     try{
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        return res.status(400).json({
+            status: 400,
+            message: "Validation errors",
+            data: errors.array(),
+        });
+        }
         let resultGetByEmail = await user.findByEmail(req.body.email)
         if(resultGetByEmail.status !== 200 ) return res.status(resultGetByEmail.status).json(resultGetByEmail);
         let resEmailAndPassword = await bcrypt.compare(req.body.password, resultGetByEmail.data.password);
@@ -96,6 +114,14 @@ exports.logOutUser = async(req, res)=>{
  */
 exports.updateUserById = async(req, res)=>{
     try{
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        return res.status(400).json({
+            status: 400,
+            message: "Validation errors",
+            data: errors.array(),
+        });
+        }
         if( req.body.password ) req.body.password = await bcrypt.hash(req.body.password, 10);
         let resultUPDATE = await user.update(req.params.id, req.body);
         return res.status(resultUPDATE.status).json(resultUPDATE);
