@@ -157,10 +157,10 @@ exports.limit = (method, route) => {
         userAgent &&
         botsUserAgents.some((bot) => new RegExp(bot, "i").test(userAgent))
       ) {
-        return res.status(403).json({ error: "Do not allow bot requests" });
+        return res.status(403).json({ message: "Do not allow bot requests" });
       }
       res.status(429).json({
-        error: message,
+        message: message,
       });
     },
   });
