@@ -21,7 +21,8 @@ const app = express();
 // app.use('/storage', express.static(join(__dirname, 'src/storage')))
 
 app.use(cors({
-    origin: 'https://cris-fr.github.io', // Agrega localhost si es necesario
+    origin: ['https://cris-fr.github.io', 'http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Especificar los métodos permitidos
     credentials: true
   }));
   app.use(session);
